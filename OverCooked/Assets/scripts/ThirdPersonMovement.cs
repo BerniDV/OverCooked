@@ -32,10 +32,12 @@ public class ThirdPersonMovement : MonoBehaviour
         inputX = Input.GetAxis("Horizontal");
         inputZ = Input.GetAxis("Vertical");
 
+       
+
         //transform.LookAt(transform.position + new Vector3(inputX, 0, inputZ));
 
         //playerRigidBody.velocity = new Vector3(inputX * speed, playerRigidBody.velocity.y , inputZ*speed);
-        controller.Move(new Vector3(inputX * speed * Time.deltaTime, playerRigidBody.velocity.y, inputZ * speed * Time.deltaTime));
+        controller.Move(new Vector3(inputX * speed * Time.deltaTime, -1, inputZ * speed * Time.deltaTime));
         var angle = Mathf.Atan2(inputZ, inputX) * Mathf.Rad2Deg;
 
         Vector3 move = new Vector3(inputX * rotateVelocity * Time.deltaTime, 0, inputZ * rotateVelocity * Time.deltaTime);

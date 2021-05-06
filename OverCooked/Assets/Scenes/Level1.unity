@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 409440409}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: item_pickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -389,6 +389,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abd9555eedf43314298e5b3b6628d0a5, type: 3}
+--- !u!1 &909186471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1210013442854752959, guid: abd9555eedf43314298e5b3b6628d0a5, type: 3}
+  m_PrefabInstance: {fileID: 722358344}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &909186479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909186471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49b19d2fefc7c134baef43a9d0161294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,9 @@ TagManager:
   - Mesa
   - character
   - plato
+  - fogon
+  - sarten
+  - ingrediente
   layers:
   - Default
   - TransparentFX

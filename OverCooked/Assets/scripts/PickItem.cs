@@ -108,6 +108,33 @@ public class PickItem : MonoBehaviour
 
             
         }
+        else if (other.tag == "basura")
+        {
+            if ( this.ObjectPicked.tag == "ingrediente" )
+            {
+
+                other.GetComponentInParent<eliminar>().ObjectToDelete = this.ObjectPicked;
+
+            }
+            else if(this.ObjectPicked.tag == "sarten")
+            {
+
+                if (ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked != null)
+                {
+                    other.GetComponentInParent<eliminar>().ObjectToDelete = ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked;
+                }
+                
+
+            }else if (this.ObjectPicked.tag == "plato")
+            {
+
+                if (ObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked != null)
+                {
+                    other.GetComponentInParent<eliminar>().ObjectToDelete = ObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked;
+                }
+            }
+
+        }
     }
     
 

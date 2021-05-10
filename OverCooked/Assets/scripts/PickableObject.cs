@@ -8,13 +8,19 @@ public class PickableObject : MonoBehaviour
 {
 
     public bool isPickable = true;
+    
 
+    private void Start()
+    {
+        
+    }
     private void OnTriggerEnter(Collider other)
     {
         
         if(other.tag == "item_pickable")
         {
 
+            
             other.GetComponentInParent<PickItem>().ObjectToPickUp = this.gameObject;
         }
     }

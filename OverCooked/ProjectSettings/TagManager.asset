@@ -11,6 +11,7 @@ TagManager:
   - fogon
   - sarten
   - ingrediente
+  - basura
   layers:
   - Default
   - TransparentFX

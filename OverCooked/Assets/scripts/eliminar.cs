@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class comidaEnSarten : MonoBehaviour
+
+
+public class eliminar : MonoBehaviour
 {
 
-    public GameObject ObjectToPickUp;
-    public GameObject ObjectPicked;
-    public Transform LocationToPick;
-
+    public GameObject ObjectToDelete;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +19,11 @@ public class comidaEnSarten : MonoBehaviour
     void Update()
     {
 
-        if (ObjectPicked)
+        if (ObjectToDelete!=null)
         {
-            ObjectPicked.GetComponentInParent<PickableObject>().isPickable = false;
+
+            Object.Destroy(ObjectToDelete);
         }
+
     }
 }

@@ -81,7 +81,15 @@ public class PickItem : MonoBehaviour
         }
         else if (other.tag == "fogon" )
         {
-            
+            if (other.GetComponentInParent<PickItem>().ObjectPicked != null && this.ObjectPicked != null)
+            {
+
+                TranspaseObjectPicked = other.GetComponentInParent<PickItem>().ObjectPicked;
+                other.GetComponentInParent<PickItem>().ObjectPicked.GetComponentInParent<PickItem>().ObjectToPickUp = this.ObjectPicked;
+
+            }
+            else
+            {
 
                 if (other.GetComponentInParent<PickItem>().ObjectPicked == null)
                 {
@@ -93,6 +101,10 @@ public class PickItem : MonoBehaviour
 
                     TranspaseObjectPicked = other.gameObject;
                 }
+
+            }
+
+                
 
             
         }

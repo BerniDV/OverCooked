@@ -56,12 +56,18 @@ public class PickItem : MonoBehaviour
             
 
         }
-        else if (other.tag == "plato" && ObjectPicked.tag != "plato" && ObjectPicked.tag != "sarten")
+        else if (other.tag == "plato")
         {
-            if (other.GetComponentInParent<ComidaEnPlato>().ObjectPicked == null)
+            if (other.GetComponentInParent<ComidaEnPlato>().ObjectPicked == null )
             {
                 TranspaseObjectPicked = other.gameObject;
-                other.GetComponentInParent<ComidaEnPlato>().ObjectToPickUp = this.ObjectPicked;
+
+                if (ObjectPicked != null && ObjectPicked.tag != "plato" && ObjectPicked.tag != "sarten")
+                {
+                    other.GetComponentInParent<ComidaEnPlato>().ObjectToPickUp = this.ObjectPicked;
+
+                }
+
             }
             else
             {
@@ -70,12 +76,20 @@ public class PickItem : MonoBehaviour
             }
 
         }
-        else if (other.tag == "sarten" && ObjectPicked.tag != "sarten" && ObjectPicked.GetComponentInParent<EstadoIngrediente>().sePuedeFreir && !ObjectPicked.GetComponentInParent<EstadoIngrediente>().EstaFrito)
+        else if (other.tag == "sarten"  )
         {
             if (other.GetComponentInParent<comidaEnSarten>().ObjectPicked == null)
             {
-                TranspaseObjectPicked = other.gameObject;
-                other.GetComponentInParent<comidaEnSarten>().ObjectToPickUp = this.ObjectPicked;
+                
+
+                if (ObjectPicked != null && ObjectPicked.tag != "sarten" && ObjectPicked.GetComponentInParent<EstadoIngrediente>().sePuedeFreir && !ObjectPicked.GetComponentInParent<EstadoIngrediente>().EstaFrito)
+                {
+
+                    TranspaseObjectPicked = other.gameObject;
+                    other.GetComponentInParent<comidaEnSarten>().ObjectToPickUp = this.ObjectPicked;
+
+                }
+                
             }
 
         }
@@ -180,6 +194,15 @@ public class PickItem : MonoBehaviour
 
         }*/
 
+
+        //no permitir que el lugar donde poner algo sea el mismo objetos que se transporta (evitampos autorelacion recursiva)
+
+        if (TranspaseObjectPicked != null && ObjectPicked!= null && TranspaseObjectPicked == ObjectPicked)
+        {
+
+            TranspaseObjectPicked = null;
+        }
+
         //Cojer objetos del interior de un plato que esta en una mesa
         if (Input.GetKeyDown(KeyCode.LeftControl) && TranspaseObjectPicked.tag == "Mesa")
         {
@@ -204,6 +227,7 @@ public class PickItem : MonoBehaviour
 
             if (Input.GetKeyDown("space"))
             {
+                
 
                 if (TranspaseObjectPicked == null)
                 {
@@ -214,7 +238,7 @@ public class PickItem : MonoBehaviour
                     ObjectPicked.transform.position = LocationToPick.position;
                     ObjectPicked.GetComponent<Rigidbody>().useGravity = false;
                     ObjectPicked.GetComponent<Rigidbody>().isKinematic = true;
-
+                    
                 }
                 else
                 {
@@ -288,9 +312,9 @@ public class PickItem : MonoBehaviour
                     }
                 }
 
-
+                
             }
-            
+
 
         }
         else if (ObjectPicked != null && this.tag == "item_pickable") //Soltar objeto
@@ -315,7 +339,7 @@ public class PickItem : MonoBehaviour
                         this.ObjectToPickUp = null;
 
                         //dejar en plato
-                    }else if (TranspaseObjectPicked.tag == "plato" && TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked == null)
+                    }else if (TranspaseObjectPicked.tag == "plato" && TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked == null && ObjectPicked.tag == "ingrediente")
                     {
                         TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked = this.ObjectPicked;
                         ObjectPicked.GetComponent<PickableObject>().isPickable = true;
@@ -375,5 +399,15 @@ public class PickItem : MonoBehaviour
         }
 
 
+    }
+
+    private void limpiarReferencias()
+    {
+
+        if (ObjectPicked != null && ObjectPicked.tag == TranspaseObjectPicked.tag)
+        {
+
+            TranspaseObjectPicked = null;
+        }
     }
 }

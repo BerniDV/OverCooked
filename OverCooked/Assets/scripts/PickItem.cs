@@ -204,7 +204,7 @@ public class PickItem : MonoBehaviour
         }
 
         //Cojer objetos del interior de un plato que esta en una mesa
-        if (Input.GetKeyDown(KeyCode.LeftControl) && TranspaseObjectPicked.tag == "Mesa")
+        if (Input.GetKeyDown(KeyCode.LeftControl) && TranspaseObjectPicked != null && TranspaseObjectPicked.tag == "Mesa")
         {
 
             if (TranspaseObjectPicked.GetComponentInParent<PickItem>().ObjectPicked != null)

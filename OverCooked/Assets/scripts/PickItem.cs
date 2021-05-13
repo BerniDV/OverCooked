@@ -82,7 +82,7 @@ public class PickItem : MonoBehaviour
             {
                 
 
-                if (ObjectPicked != null && ObjectPicked.tag != "sarten" && ObjectPicked.GetComponentInParent<EstadoIngrediente>().sePuedeFreir && !ObjectPicked.GetComponentInParent<EstadoIngrediente>().EstaFrito)
+                if (ObjectPicked != null && ObjectPicked.tag == "ingrediente" && ObjectPicked.GetComponentInParent<EstadoIngrediente>().sePuedeFreir && !ObjectPicked.GetComponentInParent<EstadoIngrediente>().EstaFrito)
                 {
 
                     TranspaseObjectPicked = other.gameObject;
@@ -124,13 +124,13 @@ public class PickItem : MonoBehaviour
         }
         else if (other.tag == "basura")
         {
-            if ( this.ObjectPicked.tag == "ingrediente" )
+            if (this.ObjectPicked != null &&  this.ObjectPicked.tag == "ingrediente" )
             {
 
                 other.GetComponentInParent<eliminar>().ObjectToDelete = this.ObjectPicked;
 
             }
-            else if(this.ObjectPicked.tag == "sarten")
+            else if(this.ObjectPicked != null && this.ObjectPicked.tag == "sarten")
             {
 
                 if (ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked != null)
@@ -139,7 +139,7 @@ public class PickItem : MonoBehaviour
                 }
                 
 
-            }else if (this.ObjectPicked.tag == "plato")
+            }else if (this.ObjectPicked != null && this.ObjectPicked.tag == "plato")
             {
 
                 if (ObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked != null)
@@ -225,7 +225,6 @@ public class PickItem : MonoBehaviour
                 {
 
                     TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked.GetComponentInParent<PickableObject>().isPickable = true;
-                    TranspaseObjectPicked = TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked;
                     this.ObjectToPickUp = TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked;
                 }
 

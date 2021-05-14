@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 7016290039699125129}
   - component: {fileID: 7016290039730164522}
   m_Layer: 0
-  m_Name: plato
+  m_Name: platoPrefab
   m_TagString: plato
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7899233824937044236}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3a75e1300560244b933d508e492037f, type: 3}
   m_Name: 
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7899233824937044236}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcb92ea5085051840988e2e5136d5382, type: 3}
   m_Name: 

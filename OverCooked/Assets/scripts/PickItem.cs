@@ -149,13 +149,22 @@ public class PickItem : MonoBehaviour
             }
 
         }
+        else if (other.tag == "entrega")
+        {
+
+            if (ObjectPicked != null && ObjectPicked.tag == "ingrediente")
+            {
+                this.TranspaseObjectPicked = other.gameObject;
+                //other.GetComponentInParent<Entrega>().objetoEntregado
+            }
+        }
     }
-    
+
 
     private void OnTriggerExit(Collider other)
     {
-        
-        if (other.tag == "Mesa" )
+
+        if (other.tag == "Mesa")
         {
 
             TranspaseObjectPicked = null;
@@ -175,13 +184,18 @@ public class PickItem : MonoBehaviour
             other.GetComponentInParent<comidaEnSarten>().ObjectToPickUp = null;
 
         }
-        else if (other.tag == "fogon" )
+        else if (other.tag == "fogon")
         {
 
             TranspaseObjectPicked = null;
             other.GetComponentInParent<PickItem>().ObjectToPickUp = null;
 
         }
+        else if (other.tag == "entrega")
+        {
+            TranspaseObjectPicked = null;
+        }
+
     }
 
     // Update is called once per frame
@@ -389,7 +403,15 @@ public class PickItem : MonoBehaviour
                         this.ObjectPicked = null;
                         this.ObjectToPickUp = null;
 
+                    }//entregar ingrediente
+                    else if (TranspaseObjectPicked.tag == "entrega" && this.ObjectPicked != null && this.ObjectPicked.tag == "ingrediente")
+                    {
+
+                        TranspaseObjectPicked.GetComponentInParent<Entrega>().objetoEntregado = this.ObjectPicked;
+                            this.ObjectPicked = null;
+
                     }
+
                 }    
                 
                 //dejar en el suelo
@@ -422,3 +444,4 @@ public class PickItem : MonoBehaviour
         }
     }
 }
+    

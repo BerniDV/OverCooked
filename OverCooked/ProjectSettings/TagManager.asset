@@ -12,6 +12,7 @@ TagManager:
   - sarten
   - ingrediente
   - basura
+  - entrega
   layers:
   - Default
   - TransparentFX

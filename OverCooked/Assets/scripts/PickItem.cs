@@ -95,6 +95,7 @@ public class PickItem : MonoBehaviour
         }
         else if (other.tag == "fogon" )
         {
+            /*
             if (other.GetComponentInParent<PickItem>().ObjectPicked != null && this.ObjectPicked != null)
             {
 
@@ -117,10 +118,35 @@ public class PickItem : MonoBehaviour
                 }
 
             }
+            */
 
-                
+            if (other.GetComponentInParent<PickItem>().ObjectPicked == null)
+            {
 
-            
+                TranspaseObjectPicked = other.gameObject;
+                other.GetComponentInParent<PickItem>().ObjectToPickUp = this.ObjectPicked;
+            }
+            else
+            {
+                if (ObjectPicked != null)
+                {
+
+                    TranspaseObjectPicked = other.GetComponentInParent<PickItem>().ObjectPicked;
+                    this.ObjectToPickUp = other.GetComponentInParent<PickItem>().ObjectPicked;
+
+                }
+                else
+                {
+                    TranspaseObjectPicked = other.gameObject;
+                    this.ObjectToPickUp = other.GetComponentInParent<PickItem>().ObjectPicked;
+
+                }
+
+            }
+
+
+
+
         }
         else if (other.tag == "basura")
         {
@@ -408,7 +434,7 @@ public class PickItem : MonoBehaviour
                     {
 
                         TranspaseObjectPicked.GetComponentInParent<Entrega>().objetoEntregado = this.ObjectPicked;
-                            this.ObjectPicked = null;
+                        this.ObjectPicked = null;
 
                     }
 

@@ -20,7 +20,7 @@ public class comidaEnSarten : MonoBehaviour
     void Update()
     {
 
-        if (ObjectPicked)
+        if (ObjectPicked != null)
         {
             ObjectPicked.GetComponentInParent<PickableObject>().isPickable = false;
         }

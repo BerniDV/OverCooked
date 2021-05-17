@@ -80,6 +80,7 @@ public class PickItem : MonoBehaviour
         {
             if (other.GetComponentInParent<comidaEnSarten>().ObjectPicked == null)
             {
+
                 
 
                 if (ObjectPicked != null && ObjectPicked.tag == "ingrediente" && ObjectPicked.GetComponentInParent<EstadoIngrediente>().sePuedeFreir && !ObjectPicked.GetComponentInParent<EstadoIngrediente>().EstaFrito)
@@ -89,7 +90,12 @@ public class PickItem : MonoBehaviour
                     other.GetComponentInParent<comidaEnSarten>().ObjectToPickUp = this.ObjectPicked;
 
                 }
-                
+                else
+                {
+                    this.ObjectToPickUp = other.GetComponentInParent<comidaEnSarten>().ObjectPicked;
+                    TranspaseObjectPicked = other.gameObject;
+                }
+
             }
 
         }
@@ -181,7 +187,7 @@ public class PickItem : MonoBehaviour
         else if (other.tag == "entrega")
         {
 
-            if (ObjectPicked != null && ObjectPicked.tag == "ingrediente")
+            if (ObjectPicked != null)
             {
                 this.TranspaseObjectPicked = other.gameObject;
                 //other.GetComponentInParent<Entrega>().objetoEntregado
@@ -461,11 +467,11 @@ public class PickItem : MonoBehaviour
 
                     }
                     //entregar ingrediente
-                    else if (TranspaseObjectPicked.tag == "entrega" && this.ObjectPicked != null && this.ObjectPicked.tag == "ingrediente")
+                    else if (TranspaseObjectPicked.tag == "entrega" && this.ObjectPicked != null)
                     {
 
                         TranspaseObjectPicked.GetComponentInParent<Entrega>().objetoEntregado = this.ObjectPicked;
-                        this.ObjectPicked = null;
+                        
 
                     }
 

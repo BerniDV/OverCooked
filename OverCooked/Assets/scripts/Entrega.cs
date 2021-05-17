@@ -62,7 +62,7 @@ public class Entrega : MonoBehaviour
     private void entregarComida()
     {
 
-        if (objetoEntregado != null && objetoEntregado.tag == "ingrediente")
+        if (objetoEntregado != null && objetoEntregado.tag == "ingrediente" && (objetoEntregado.GetComponentInParent<EstadoIngrediente>().EstaFrito || objetoEntregado.GetComponentInParent<EstadoIngrediente>().EstaCortado))
         {
 
             actualizarPuntos();

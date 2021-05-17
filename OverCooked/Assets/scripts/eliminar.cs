@@ -21,7 +21,7 @@ public class eliminar : MonoBehaviour
     void Update()
     {
 
-        if (ObjectToDelete!=null && puedeEliminar)
+        if (ObjectToDelete!=null && puedeEliminar )
         {
 
             Object.Destroy(ObjectToDelete);

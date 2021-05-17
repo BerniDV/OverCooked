@@ -24,12 +24,9 @@ public class Entrega : MonoBehaviour
 
         displayPoints();
 
-        if (objetoEntregado != null && objetoEntregado.tag == "ingrediente")
-        {
+        referenciarAComida();
 
-            ++points;
-            Object.Destroy(objetoEntregado);
-        }
+        entregarComida();
 
         if (points == 3)
         {
@@ -42,6 +39,42 @@ public class Entrega : MonoBehaviour
     {
 
         PointsText.text = string.Format("{0} points", points);
+    }
+
+    private void referenciarAComida()
+    {
+        if (objetoEntregado != null)
+        {
+
+
+            if(objetoEntregado.tag == "plato")
+            {
+
+                objetoEntregado = objetoEntregado.GetComponentInParent<ComidaEnPlato>().ObjectPicked;
+
+            }
+
+        }
+
+
+    }
+
+    private void entregarComida()
+    {
+
+        if (objetoEntregado != null && objetoEntregado.tag == "ingrediente")
+        {
+
+            actualizarPuntos();
+            Object.Destroy(objetoEntregado);
+        }
+    }
+
+    private void actualizarPuntos()
+    {
+
+        ++points;
+
     }
 
 }

@@ -153,6 +153,7 @@ public class PickItem : MonoBehaviour
             if (this.ObjectPicked != null &&  this.ObjectPicked.tag == "ingrediente" )
             {
 
+                TranspaseObjectPicked = other.gameObject;
                 other.GetComponentInParent<eliminar>().ObjectToDelete = this.ObjectPicked;
 
             }
@@ -161,6 +162,7 @@ public class PickItem : MonoBehaviour
 
                 if (ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked != null)
                 {
+                    TranspaseObjectPicked = other.gameObject;
                     other.GetComponentInParent<eliminar>().ObjectToDelete = ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked;
                 }
                 
@@ -170,6 +172,7 @@ public class PickItem : MonoBehaviour
 
                 if (ObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked != null)
                 {
+                    TranspaseObjectPicked = other.gameObject;
                     other.GetComponentInParent<eliminar>().ObjectToDelete = ObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked;
                 }
             }
@@ -219,6 +222,12 @@ public class PickItem : MonoBehaviour
         }
         else if (other.tag == "entrega")
         {
+            TranspaseObjectPicked = null;
+        }
+        else if (other.tag == "basura")
+        {
+
+            other.GetComponentInParent<eliminar>().ObjectToDelete = null;
             TranspaseObjectPicked = null;
         }
 
@@ -445,7 +454,13 @@ public class PickItem : MonoBehaviour
                         ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectToPickUp = null;
 
 
-                    }//entregar ingrediente
+                    } else if (TranspaseObjectPicked.tag == "basura" && this.ObjectPicked != null ) {
+
+
+                        TranspaseObjectPicked.GetComponentInParent<eliminar>().puedeEliminar = true;
+
+                    }
+                    //entregar ingrediente
                     else if (TranspaseObjectPicked.tag == "entrega" && this.ObjectPicked != null && this.ObjectPicked.tag == "ingrediente")
                     {
 

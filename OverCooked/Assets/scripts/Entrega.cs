@@ -62,18 +62,25 @@ public class Entrega : MonoBehaviour
     private void entregarComida()
     {
 
-        if (objetoEntregado != null && objetoEntregado.tag == "ingrediente" && (objetoEntregado.GetComponentInParent<EstadoIngrediente>().EstaFrito || objetoEntregado.GetComponentInParent<EstadoIngrediente>().EstaCortado))
+        if (objetoEntregado != null && objetoEntregado.tag == "ingrediente" && objetoEntregado.GetComponentInParent<receta>().algunaRecetaCompletada)
         {
+            int puntosSuma = 0;
 
-            actualizarPuntos();
+            if (objetoEntregado.GetComponentInParent<Atributos>().nombre == "pan")
+            {
+
+                puntosSuma = objetoEntregado.GetComponentInParent<recetaHamburguesa>().puntosReceta;
+            }
+
+            actualizarPuntos(puntosSuma);
             Object.Destroy(objetoEntregado);
         }
     }
 
-    private void actualizarPuntos()
+    private void actualizarPuntos(int puntosSuma)
     {
 
-        ++points;
+        points += puntosSuma;
 
     }
 

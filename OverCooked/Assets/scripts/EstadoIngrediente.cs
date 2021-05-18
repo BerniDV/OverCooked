@@ -23,7 +23,7 @@ public class EstadoIngrediente : MonoBehaviour
     void Update()
     {
 
-        if (EstaCortado || EstaFrito)
+        if (EstaFrito)
         {
 
             this.GetComponentInParent<PickableObject>().isPickable = false;

@@ -12,6 +12,12 @@ TagManager:
   - sarten
   - ingrediente
   - basura
+<<<<<<< Updated upstream
+=======
+  - entrega
+  - BarraProgreso
+  - canvasUI
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

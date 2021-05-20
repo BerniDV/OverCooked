@@ -229,12 +229,14 @@ public class PickItem : MonoBehaviour
 
             TranspaseObjectPicked = null;
             other.GetComponentInParent<PickItem>().ObjectToPickUp = null;
+            ObjectToPickUp = null;
         }
         else if (other.tag == "MesaCortar")
         {
 
             TranspaseObjectPicked = null;
             other.GetComponentInParent<PickItem>().ObjectToPickUp = null;
+            ObjectToPickUp = null;
         }
         else if (other.tag == "plato")
         {
@@ -248,6 +250,7 @@ public class PickItem : MonoBehaviour
 
             TranspaseObjectPicked = null;
             other.GetComponentInParent<comidaEnSarten>().ObjectToPickUp = null;
+            ObjectToPickUp = null;
 
         }
         else if (other.tag == "fogon")
@@ -255,17 +258,20 @@ public class PickItem : MonoBehaviour
 
             TranspaseObjectPicked = null;
             other.GetComponentInParent<PickItem>().ObjectToPickUp = null;
+            ObjectToPickUp = null;
 
         }
         else if (other.tag == "entrega")
         {
             TranspaseObjectPicked = null;
+            ObjectToPickUp = null;
         }
         else if (other.tag == "basura")
         {
 
             other.GetComponentInParent<eliminar>().ObjectToDelete = null;
             TranspaseObjectPicked = null;
+            ObjectToPickUp = null;
         }
 
     }

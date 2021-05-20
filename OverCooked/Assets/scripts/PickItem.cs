@@ -533,7 +533,7 @@ public class PickItem : MonoBehaviour
 
                         GameObject objectEnMano = null;
 
-                        if (ObjectPicked != null && ObjectPicked.GetComponentInParent<Atributos>().nombre == "colCortada")
+                        if (ObjectPicked != null && ObjectPicked.GetComponentInParent<Atributos>().nombre == "colCortada" || ObjectPicked.GetComponentInParent<Atributos>().nombre == "TomateCortado")
                         {
 
                             objectEnMano = ObjectPicked;
@@ -575,6 +575,19 @@ public class PickItem : MonoBehaviour
                                 ObjectToPut.GetComponent<PickableObject>().isPickable = false;
                                 TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked.GetComponentInParent<recetaHamburguesa>().ensaladaPicked.transform.SetParent(TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked.GetComponentInParent<recetaHamburguesa>().LocationEnsalada);
                                 TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked.GetComponentInParent<recetaHamburguesa>().ensaladaPicked.transform.position = TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked.GetComponentInParent<recetaHamburguesa>().LocationEnsalada.position;
+                                ObjectToPut.GetComponent<Rigidbody>().useGravity = false;
+                                ObjectToPut.GetComponent<Rigidbody>().isKinematic = true;
+                                this.ObjectPicked = null;
+                                this.ObjectToPickUp = null;
+
+                                break;
+
+                            case "TomateCortado":
+
+                                TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked.GetComponentInParent<recetaHamburguesa>().tomatePicked = ObjectToPut;
+                                ObjectToPut.GetComponent<PickableObject>().isPickable = false;
+                                TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked.GetComponentInParent<recetaHamburguesa>().tomatePicked.transform.SetParent(TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked.GetComponentInParent<recetaHamburguesa>().LocationTomate);
+                                TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked.GetComponentInParent<recetaHamburguesa>().tomatePicked.transform.position = TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked.GetComponentInParent<recetaHamburguesa>().LocationTomate.position;
                                 ObjectToPut.GetComponent<Rigidbody>().useGravity = false;
                                 ObjectToPut.GetComponent<Rigidbody>().isKinematic = true;
                                 this.ObjectPicked = null;

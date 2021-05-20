@@ -6,6 +6,7 @@ public class cortarIngrediente : MonoBehaviour
 {
     public bool sePuedeCortar;
     public GameObject ColCortada;
+    public GameObject TomateCortado;
 
     // Start is called before the first frame update
     void Start()
@@ -49,17 +50,39 @@ public class cortarIngrediente : MonoBehaviour
             GameObject ItemPicked;
             ItemPicked = this.GetComponentInParent<PickItem>().ObjectPicked;
 
-        
+            string nameIngrediente = this.GetComponentInParent<PickItem>().ObjectPicked.GetComponentInParent<Atributos>().nombre;
+
+
             Object.Destroy(ItemPicked);
 
-            GameObject MyColCortada = Instantiate(ColCortada);
-            MyColCortada.transform.position = this.GetComponentInParent<PickItem>().LocationToPick.position;
-            MyColCortada.transform.SetParent(this.GetComponentInParent<PickItem>().LocationToPick);
-            MyColCortada.GetComponent<Rigidbody>().useGravity = false;
-            MyColCortada.GetComponent<Rigidbody>().isKinematic = true;
+            GameObject ObjetoCortado = null;
+
+            if (nameIngrediente == "col")
+            {
+
+                ObjetoCortado = Instantiate(ColCortada);
+                ObjetoCortado.transform.position = this.GetComponentInParent<PickItem>().LocationToPick.position;
+                ObjetoCortado.transform.SetParent(this.GetComponentInParent<PickItem>().LocationToPick);
+                ObjetoCortado.GetComponent<Rigidbody>().useGravity = false;
+                ObjetoCortado.GetComponent<Rigidbody>().isKinematic = true;
+
+            } else if (nameIngrediente == "Tomate") {
 
 
-            this.GetComponentInParent<PickItem>().ObjectPicked = MyColCortada;
+                ObjetoCortado = Instantiate(TomateCortado);
+                ObjetoCortado.transform.position = this.GetComponentInParent<PickItem>().LocationToPick.position;
+                ObjetoCortado.transform.SetParent(this.GetComponentInParent<PickItem>().LocationToPick);
+                ObjetoCortado.GetComponent<Rigidbody>().useGravity = false;
+                ObjetoCortado.GetComponent<Rigidbody>().isKinematic = true;
+
+            }
+
+            if (ObjetoCortado != null)
+            {
+
+                this.GetComponentInParent<PickItem>().ObjectPicked = ObjetoCortado;
+
+            }
         }
 
     }

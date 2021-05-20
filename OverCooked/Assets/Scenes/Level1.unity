@@ -258,6 +258,78 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   algunaRecetaCompletada: 0
+--- !u!1 &203531985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 203531986}
+  - component: {fileID: 203531988}
+  - component: {fileID: 203531987}
+  m_Layer: 5
+  m_Name: ImagenPedido
+  m_TagString: ImagenPedido
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &203531986
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203531985}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 588047041}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -1000}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &203531987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203531985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 98271d76cb9b4814ea4191dbe695ff1d, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &203531988
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203531985}
+  m_CullTransparentMesh: 1
 --- !u!1 &203652813 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6692516250781867622, guid: 34421c12370157445baf606797685058, type: 3}
@@ -425,6 +497,7 @@ RectTransform:
   - {fileID: 1322717882}
   - {fileID: 1545064518}
   - {fileID: 147611748}
+  - {fileID: 203531986}
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1727,6 +1800,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 588047037}
   listaPedidos: []
+  imagenPedidos: []
   actividadPedidos: 
   progresoPedidos: []
 --- !u!4 &1999631348
@@ -2612,6 +2686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sePuedeCortar: 0
   ColCortada: {fileID: 2628292115985086827, guid: b43cdddcab7dda144b8f9d65702f79a2, type: 3}
+  TomateCortado: {fileID: 0}
 --- !u!23 &9178282691908898082
 MeshRenderer:
   m_ObjectHideFlags: 0

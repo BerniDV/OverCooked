@@ -16,6 +16,7 @@ TagManager:
   - MesaCortar
   - canvasUI
   - BarraProgreso
+  - ImagenPedido
   layers:
   - Default
   - TransparentFX

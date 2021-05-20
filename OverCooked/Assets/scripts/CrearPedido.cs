@@ -10,6 +10,7 @@ public class CrearPedido : MonoBehaviour
 
     //public GameObject[] listaPedidos;
     public Slider[]   listaPedidos;
+    public GameObject[]   imagenPedidos;
     public bool[] actividadPedidos;
     public float[] progresoPedidos;
     
@@ -22,6 +23,7 @@ public class CrearPedido : MonoBehaviour
 
         //listaPedidos = new GameObject[4];
         listaPedidos     = new Slider[4];
+        imagenPedidos    = new  GameObject[4];
         actividadPedidos = new   bool[4];
         progresoPedidos  = new  float[4];
 
@@ -51,6 +53,7 @@ public class CrearPedido : MonoBehaviour
             progresoPedidos[index] = 0.0f;
 
             Destroy(listaPedidos[index].gameObject);
+            Destroy(imagenPedidos[index].gameObject);
         }
     }
 
@@ -68,10 +71,16 @@ public class CrearPedido : MonoBehaviour
             {
                 //creariamos primer pedido disponible
 
+                imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedido"));
+                imagenPedidos[index].gameObject.transform.Translate(0, 1000.0f, 0); //perfecto para moverla correctamente
+                imagenPedidos[index].gameObject.transform.Translate(-450.0f + (index) * 300.0f, 230.0f, -180.0f);
+                imagenPedidos[index].gameObject.transform.SetParent(canvas.transform, false);
+
                 listaPedidos[index] = Instantiate(GameObject.FindGameObjectWithTag("BarraProgreso").GetComponent<Slider>());
                 listaPedidos[index].gameObject.transform.Translate(0, 1000.0f, 0); //perfecto para moverla correctamente
-                listaPedidos[index].gameObject.transform.Translate(-450.0f+(index)*300.0f, 200.0f, -180.0f); 
+                listaPedidos[index].gameObject.transform.Translate(-450.0f+(index)*300.0f, 140.0f, -180.0f); 
                 listaPedidos[index].gameObject.transform.SetParent(canvas.transform, false);
+
                 actividadPedidos[index] = true;
                 progresoPedidos[index] = 0.0f;
 

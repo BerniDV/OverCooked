@@ -231,9 +231,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LocationCarne: {fileID: 1959900343}
   carnePicked: {fileID: 0}
+  LocationEnsalada: {fileID: 1931588181}
+  ensaladaPicked: {fileID: 0}
+  LocationTomate: {fileID: 1321444024}
+  tomatePicked: {fileID: 0}
   tipoReceta: 
   puntosReceta: 0
   RecetaHamburguesaDeCarneCompleta: 0
+  RecetaHamburguesaDeCarneConEnsaladaCompleta: 0
+  RecetaHamburguesaDeCarneConEnsaladaConTomateCompleta: 0
+--- !u!4 &181181415 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 746155378300503916, guid: 2a1be891de384e143ad9053cc55dabb0, type: 3}
+  m_PrefabInstance: {fileID: 405443896022791818}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &181181416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,6 +258,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   algunaRecetaCompletada: 0
+--- !u!1 &203652813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6692516250781867622, guid: 34421c12370157445baf606797685058, type: 3}
+  m_PrefabInstance: {fileID: 5774162019655773893}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &203652819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203652813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ed501c6ff55724b9138ea28759416d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombre: sarten
 --- !u!1 &207434843
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,6 +934,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115304510}
   m_CullTransparentMesh: 1
+--- !u!1 &1321444023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1321444024}
+  m_Layer: 0
+  m_Name: PositionTomate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1321444024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321444023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.327, y: 0.529, z: -0.122}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 181181415}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1322717881
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,6 +1595,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1931588180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1931588181}
+  m_Layer: 0
+  m_Name: PositionEnsalada
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1931588181
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931588180}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.348, y: 0.351, z: -0.182}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 181181415}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1959900343 stripped
 Transform:

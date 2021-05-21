@@ -17,6 +17,9 @@ TagManager:
   - canvasUI
   - BarraProgreso
   - ImagenPedido
+  - ImagenPedidoPanHamburguesa
+  - ImagenPedidoPanHamburguesaCol
+  - ImagenPedidoPanHamburguesaColTomate
   layers:
   - Default
   - TransparentFX

@@ -53,11 +53,13 @@ public class CrearPedido : MonoBehaviour
     {
         if (actividadPedidos[index])
         {
+
             actividadPedidos[index] = false;
             progresoPedidos[index] = 0.0f;
 
             Destroy(listaPedidos[index].gameObject);
             Destroy(imagenPedidos[index].gameObject);
+
         }
     }
 

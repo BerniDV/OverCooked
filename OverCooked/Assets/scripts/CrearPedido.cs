@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class CrearPedido : MonoBehaviour
 {
     //public GameObject pedido;
     public GameObject canvas;
+    public int nPedidosDiferentes;
 
     //public GameObject[] listaPedidos;
     public Slider[]   listaPedidos;
@@ -20,6 +22,8 @@ public class CrearPedido : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        nPedidosDiferentes = 3;
 
         //listaPedidos = new GameObject[4];
         listaPedidos     = new Slider[4];
@@ -57,6 +61,29 @@ public class CrearPedido : MonoBehaviour
         }
     }
 
+    void CrearImagenPedido(int index)
+    {
+        System.Random rnd = new System.Random();
+        int randPedido = rnd.Next(0, nPedidosDiferentes);
+
+        switch (randPedido)
+        {
+            case 0:
+                imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoPanHamburguesa"));
+                break;
+            case 1:
+                imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoPanHamburguesaCol"));
+                break;
+            case 2:
+                imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoPanHamburguesaColTomate"));
+                break;
+        }
+
+        imagenPedidos[index].gameObject.transform.Translate(0, 1000.0f, 0); //perfecto para moverla correctamente
+        imagenPedidos[index].gameObject.transform.Translate(-450.0f + (index) * 300.0f, 230.0f, -180.0f);
+        imagenPedidos[index].gameObject.transform.SetParent(canvas.transform, false);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -70,12 +97,13 @@ public class CrearPedido : MonoBehaviour
             if(index >= 0)
             {
                 //creariamos primer pedido disponible
-
+                CrearImagenPedido(index);
+                /*
                 imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedido"));
                 imagenPedidos[index].gameObject.transform.Translate(0, 1000.0f, 0); //perfecto para moverla correctamente
                 imagenPedidos[index].gameObject.transform.Translate(-450.0f + (index) * 300.0f, 230.0f, -180.0f);
                 imagenPedidos[index].gameObject.transform.SetParent(canvas.transform, false);
-
+                */
                 listaPedidos[index] = Instantiate(GameObject.FindGameObjectWithTag("BarraProgreso").GetComponent<Slider>());
                 listaPedidos[index].gameObject.transform.Translate(0, 1000.0f, 0); //perfecto para moverla correctamente
                 listaPedidos[index].gameObject.transform.Translate(-450.0f+(index)*300.0f, 140.0f, -180.0f); 

@@ -123,6 +123,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &97071393 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3594757430204396010, guid: 8622ecf698bb4a648af689947dfe9de4, type: 3}
+  m_PrefabInstance: {fileID: 4405168080914899966}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &97071398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97071393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ed501c6ff55724b9138ea28759416d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombre: basura
 --- !u!1 &147611747
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,6 +421,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sePuedeCocinar: 0
   CarneCocinada: {fileID: 3395088920725556423, guid: 194ed32a4318ee04991eabc08ecca9ae, type: 3}
+--- !u!114 &419592277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419592270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ed501c6ff55724b9138ea28759416d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombre: fogon
 --- !u!1 &588047037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,6 +1371,20 @@ MonoBehaviour:
   PointsText: {fileID: 1545064519}
   points: 0
   objetoEntregado: {fileID: 0}
+  recetaEntregada: 
+--- !u!114 &1475296970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475296963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ed501c6ff55724b9138ea28759416d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombre: mesaEntrega
 --- !u!1 &1481644189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1589,6 +1634,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545064517}
   m_CullTransparentMesh: 1
+--- !u!1 &1669726456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6895908140211373675, guid: 82ad7153e11e9cf4897d85d758ea0784, type: 3}
+  m_PrefabInstance: {fileID: 6012945673396950410}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1669726463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669726456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ed501c6ff55724b9138ea28759416d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombre: mesaNormal
 --- !u!1 &1685324582
 GameObject:
   m_ObjectHideFlags: 0
@@ -2625,6 +2688,7 @@ GameObject:
   - component: {fileID: 8382201457645608013}
   - component: {fileID: 8382201457645608012}
   - component: {fileID: 8382201457645608016}
+  - component: {fileID: 8382201457645608017}
   m_Layer: 0
   m_Name: mesaCortar
   m_TagString: MesaCortar
@@ -2705,6 +2769,19 @@ MonoBehaviour:
   sePuedeCortar: 0
   ColCortada: {fileID: 2628292115985086827, guid: b43cdddcab7dda144b8f9d65702f79a2, type: 3}
   TomateCortado: {fileID: 7321547576451537741, guid: 03a97aa94da1dbd42b61cab64493c8bc, type: 3}
+--- !u!114 &8382201457645608017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8382201457645608011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ed501c6ff55724b9138ea28759416d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombre: fogon
 --- !u!1001 &8553485926296543622
 PrefabInstance:
   m_ObjectHideFlags: 0

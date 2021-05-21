@@ -11,6 +11,8 @@ public class Entrega : MonoBehaviour
     public int points;
     public GameObject objetoEntregado;
 
+    public string recetaEntregada;
+
 
     // Start is called before the first frame update
     void Start()
@@ -70,6 +72,7 @@ public class Entrega : MonoBehaviour
             {
 
                 puntosSuma = objetoEntregado.GetComponentInParent<recetaHamburguesa>().puntosReceta;
+                recetaEntregada = objetoEntregado.GetComponentInParent<recetaHamburguesa>().tipoReceta;
             }
 
             actualizarPuntos(puntosSuma);

@@ -9,6 +9,8 @@ public class EstadoIngrediente : MonoBehaviour
     public bool sePuedeFreir;
     public bool EstaCortado;
     public bool EstaFrito;
+    public bool SePuedeHervir;
+    public bool EstaHervido;
 
 
     // Start is called before the first frame update

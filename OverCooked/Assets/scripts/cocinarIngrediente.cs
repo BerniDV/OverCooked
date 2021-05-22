@@ -7,7 +7,10 @@ public class cocinarIngrediente : MonoBehaviour
 
     public bool sePuedeCocinar;
     public GameObject CarneCocinada;
-    
+
+    public bool sePuedeHervir;
+    public GameObject ArrozHervido;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,8 @@ public class cocinarIngrediente : MonoBehaviour
     void Update()
     {
         sePuedeCocinar = PuedeCocinar();
+
+        sePuedeHervir = PuedeHervir();
 
         SustituirModelo();
     }
@@ -34,6 +39,30 @@ public class cocinarIngrediente : MonoBehaviour
             GameObject Ingrediente = ItemPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked;
 
             if (Ingrediente != null && Ingrediente.tag == "ingrediente" && Ingrediente.GetComponentInParent<EstadoIngrediente>().sePuedeFreir && !Ingrediente.GetComponentInParent<EstadoIngrediente>().EstaFrito)
+            {
+
+                return true;
+
+
+            }
+
+        }
+
+        return false;
+    }
+
+    bool PuedeHervir()
+    {
+        GameObject ItemPicked;
+
+        ItemPicked = this.GetComponentInParent<PickItem>().ObjectPicked;
+
+        if (ItemPicked != null && ItemPicked.tag == "olla")
+        {
+
+            GameObject Ingrediente = ItemPicked.GetComponentInParent<comidaEnOlla>().ObjectPicked;
+
+            if (Ingrediente != null && Ingrediente.tag == "ingrediente" && Ingrediente.GetComponentInParent<EstadoIngrediente>().SePuedeHervir && !Ingrediente.GetComponentInParent<EstadoIngrediente>().EstaHervido)
             {
 
                 return true;
@@ -66,6 +95,29 @@ public class cocinarIngrediente : MonoBehaviour
 
 
             ItemPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked = MyCarneCocinada;
+
+            //preparar arroz
+        }
+        
+        if (sePuedeHervir && this.GetComponentInParent<PickItem>().ObjectPicked.GetComponentInParent<comidaEnOlla>().ObjectPicked.GetComponentInParent<Atributos>().nombre == "arroz")
+        {
+
+            GameObject ItemPicked;
+            ItemPicked = this.GetComponentInParent<PickItem>().ObjectPicked;
+
+            GameObject Ingrediente = ItemPicked.GetComponentInParent<comidaEnOlla>().ObjectPicked;
+            Object.Destroy(Ingrediente);
+
+            GameObject MyArrozHervido = Instantiate(ArrozHervido);
+            MyArrozHervido.transform.position = ItemPicked.GetComponentInParent<comidaEnOlla>().LocationToPick.position;
+            MyArrozHervido.transform.SetParent(ItemPicked.GetComponentInParent<comidaEnOlla>().LocationToPick);
+            MyArrozHervido.GetComponent<Rigidbody>().useGravity = false;
+            MyArrozHervido.GetComponent<Rigidbody>().isKinematic = true;
+
+
+            ItemPicked.GetComponentInParent<comidaEnOlla>().ObjectPicked = MyArrozHervido;
+
+
         }
 
     }

@@ -93,6 +93,12 @@ public class Entrega : MonoBehaviour
                             puntosSuma = objetoEntregado.GetComponentInParent<recetaHamburguesa>().puntosReceta;
                             recetaEntregada = objetoEntregado.GetComponentInParent<recetaHamburguesa>().tipoReceta;
                         }
+                        else
+                        {
+
+                            puntosSuma = objetoEntregado.GetComponentInParent<recetaSopa>().puntosReceta;
+                            recetaEntregada = objetoEntregado.GetComponentInParent<recetaSopa>().tipoReceta;
+                        }
 
                         actualizarPuntos(puntosSuma);
                         Object.Destroy(objetoEntregado);

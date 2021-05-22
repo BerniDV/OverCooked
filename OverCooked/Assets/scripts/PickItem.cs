@@ -108,7 +108,7 @@ public class PickItem : MonoBehaviour
 
                 
 
-                if (ObjectPicked != null && ObjectPicked.tag == "ingrediente" && ObjectPicked.GetComponentInParent<EstadoIngrediente>().sePuedeFreir && !ObjectPicked.GetComponentInParent<EstadoIngrediente>().EstaFrito)
+                if (ObjectPicked != null && ObjectPicked.tag == "ingrediente" && ObjectPicked.GetComponentInParent<EstadoIngrediente>() != null && ObjectPicked.GetComponentInParent<EstadoIngrediente>().sePuedeFreir && !ObjectPicked.GetComponentInParent<EstadoIngrediente>().EstaFrito)
                 {
 
                     TranspaseObjectPicked = other.gameObject;
@@ -131,7 +131,7 @@ public class PickItem : MonoBehaviour
 
 
 
-                if (ObjectPicked != null && ObjectPicked.tag == "ingrediente" && ObjectPicked.GetComponentInParent<EstadoIngrediente>().SePuedeHervir && !ObjectPicked.GetComponentInParent<EstadoIngrediente>().EstaHervido)
+                if (ObjectPicked != null && ObjectPicked.tag == "ingrediente" && ObjectPicked.GetComponentInParent<EstadoIngrediente>() != null && ObjectPicked.GetComponentInParent<EstadoIngrediente>().SePuedeHervir && !ObjectPicked.GetComponentInParent<EstadoIngrediente>().EstaHervido)
                 {
 
                     TranspaseObjectPicked = other.gameObject;
@@ -544,7 +544,7 @@ public class PickItem : MonoBehaviour
 
                     }
                     //dejar en sarten
-                    else if (TranspaseObjectPicked.tag == "sarten" && TranspaseObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked == null && ObjectPicked != null && ObjectPicked.tag == "ingrediente" && ObjectPicked.GetComponentInParent<EstadoIngrediente>().sePuedeFreir)
+                    else if (TranspaseObjectPicked.tag == "sarten" && TranspaseObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked == null && ObjectPicked != null && ObjectPicked.tag == "ingrediente" && ObjectPicked.GetComponentInParent<EstadoIngrediente>()!=null && ObjectPicked.GetComponentInParent<EstadoIngrediente>().sePuedeFreir)
                     {
                         TranspaseObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked = this.ObjectPicked;
                         ObjectPicked.GetComponent<PickableObject>().isPickable = true;
@@ -808,9 +808,190 @@ public class PickItem : MonoBehaviour
 
                         }
 
+                    }
+                    //dejar ingrediente de sarten/olla o en mano a panTaco dentro de plato
+                    else if (TranspaseObjectPicked.tag == "plato" && TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked != null && TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked.GetComponentInParent<Atributos>().nombre == "panTaco")
+                    {
+                        GameObject objectInSasrten = null;
+                        GameObject objectInOlla = null;
+
+                        if (ObjectPicked.tag == "sarten" && ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked != null)
+                        {
+
+                            objectInSasrten = ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked;
+                        }
+                        if (ObjectPicked.tag == "olla" && ObjectPicked.GetComponentInParent<comidaEnOlla>().ObjectPicked != null)
+                        {
+
+                            objectInOlla = ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked;
+                        }
 
 
+                        GameObject objectEnMano = null;
 
+                        if (ObjectPicked != null && ObjectPicked.GetComponentInParent<Atributos>().nombre == "Tomate")
+                        {
+
+                            objectEnMano = ObjectPicked;
+
+                        }else if (ObjectPicked != null && ObjectPicked.GetComponentInParent<Atributos>().nombre == "carneCocinada")
+                        {
+
+                            objectEnMano = ObjectPicked;
+                        }
+
+                        GameObject ObjectToPut = null;
+
+                        if (objectEnMano != null)
+                        {
+
+                            ObjectToPut = objectEnMano;
+                        }
+                        else if (objectInSasrten != null)
+                        {
+
+                            ObjectToPut = objectInSasrten;
+                        }
+                        else if (objectInOlla != null)
+                        {
+
+                            ObjectToPut = objectInOlla;
+                        }
+
+                        //Colocar segun ingrediente 
+
+                        if (ObjectToPut != null)
+                        {
+
+
+                            switch (ObjectToPut.GetComponentInParent<Atributos>().nombre)
+                            {
+
+                              
+
+                                case "carneCocinada":
+
+                                    TranspaseObjectPicked.GetComponentInParent<sustituirModelos>().carnepicked = true;
+                                   
+                                   
+                                    Object.Destroy(ObjectToPut);
+
+                                    if (this.ObjectPicked.GetComponentInParent<Atributos>().nombre == "sarten")
+                                    {
+
+                                        this.ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked = null;
+
+                                    }
+                                    else if (this.ObjectPicked.GetComponentInParent<Atributos>().nombre == "olla")
+                                    {
+
+                                        this.ObjectPicked.GetComponentInParent<comidaEnOlla>().ObjectPicked = null;
+                                    }
+                                    else
+                                    {
+
+                                        this.ObjectPicked = null;
+                                    }
+
+
+                                    this.ObjectToPickUp = null;
+
+                                    break;
+
+                            }
+
+                        }
+
+                    }
+                    //dejar ingrediente de sarten/olla o en mano a panTacoConCarne dentro de plato
+                    else if (TranspaseObjectPicked.tag == "plato" && TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked != null && TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked.GetComponentInParent<Atributos>().nombre == "hotDog")
+                    {
+                        GameObject objectInSasrten = null;
+                        GameObject objectInOlla = null;
+
+                        if (ObjectPicked.tag == "sarten" && ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked != null)
+                        {
+
+                            objectInSasrten = ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked;
+                        }
+                        if (ObjectPicked.tag == "olla" && ObjectPicked.GetComponentInParent<comidaEnOlla>().ObjectPicked != null)
+                        {
+
+                            objectInOlla = ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked;
+                        }
+
+
+                        GameObject objectEnMano = null;
+
+                        if (ObjectPicked != null && ObjectPicked.GetComponentInParent<Atributos>().nombre == "Tomate")
+                        {
+
+                            objectEnMano = ObjectPicked;
+
+                        }
+                        
+
+                        GameObject ObjectToPut = null;
+
+                        if (objectEnMano != null)
+                        {
+
+                            ObjectToPut = objectEnMano;
+                        }
+                        else if (objectInSasrten != null)
+                        {
+
+                            ObjectToPut = objectInSasrten;
+                        }
+                        else if (objectInOlla != null)
+                        {
+
+                            ObjectToPut = objectInOlla;
+                        }
+
+                        //Colocar segun ingrediente 
+
+                        if (ObjectToPut != null)
+                        {
+
+
+                            switch (ObjectToPut.GetComponentInParent<Atributos>().nombre)
+                            {
+
+                                case "Tomate":
+
+
+                                    TranspaseObjectPicked.GetComponentInParent<sustituirModelos>().tomatePicked = true;
+
+                                    Object.Destroy(ObjectToPut);
+
+                                    if (this.ObjectPicked.GetComponentInParent<Atributos>().nombre == "sarten")
+                                    {
+
+                                        this.ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked = null;
+
+                                    }
+                                    else if (this.ObjectPicked.GetComponentInParent<Atributos>().nombre == "olla")
+                                    {
+
+                                        this.ObjectPicked.GetComponentInParent<comidaEnOlla>().ObjectPicked = null;
+                                    }
+                                    else
+                                    {
+
+                                        this.ObjectPicked = null;
+                                    }
+
+
+                                    this.ObjectToPickUp = null;
+
+                                    break;
+
+                                
+
+                            }
+
+                        }
 
                     }
 

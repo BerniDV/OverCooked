@@ -69,7 +69,7 @@ public class Entrega : MonoBehaviour
 
 
     }
-
+    /*
     private void entregarComida()
     {
         bool unaSolaEntrega = false;
@@ -80,10 +80,10 @@ public class Entrega : MonoBehaviour
             {
                 if (PedidosObject.GetComponent<CrearPedido>().actividadPedidos[i]) //hay un pedido en el hueco i
                 {
-                    if (objetoEntregado.GetComponentInParent<recetaHamburguesa>().tipoReceta == PedidosObject.GetComponent<CrearPedido>().nombrePedidos[i] && !unaSolaEntrega)
-                    {
+                    //if (objetoEntregado.GetComponentInParent<recetaHamburguesa>().tipoReceta == PedidosObject.GetComponent<CrearPedido>().nombrePedidos[i] && !unaSolaEntrega)
+                    //{
 
-                        unaSolaEntrega = true; //Si hubiesen 4 veces la misma receta, se estaria entregando 4 veces y no es así, solo una.
+                        //unaSolaEntrega = true; //Si hubiesen 4 veces la misma receta, se estaria entregando 4 veces y no es así, solo una.
 
                         int puntosSuma = 0;
 
@@ -105,11 +105,63 @@ public class Entrega : MonoBehaviour
 
                         PedidosObject.GetComponent<CrearPedido>().DestroyPedido(i);
                         
-                    }
+                    //}
                 }
             }
         }
     }
+    */
+
+    private void entregarComida()
+    {
+        bool unaSolaEntrega = false;
+
+        if (objetoEntregado != null && objetoEntregado.tag == "ingrediente" && objetoEntregado.GetComponentInParent<receta>().algunaRecetaCompletada)
+        {
+            for (int i = 0; i < nPedidos; ++i)
+            {
+                if (PedidosObject.GetComponent<CrearPedido>().actividadPedidos[i]) //hay un pedido en el hueco i
+                {
+                    //if (objetoEntregado.GetComponentInParent<recetaHamburguesa>().tipoReceta == PedidosObject.GetComponent<CrearPedido>().nombrePedidos[i] && !unaSolaEntrega)
+                    //{
+
+                    //unaSolaEntrega = true; //Si hubiesen 4 veces la misma receta, se estaria entregando 4 veces y no es así, solo una.
+
+                    int puntosSuma = 0;
+
+                    if (objetoEntregado.GetComponentInParent<Atributos>().nombre == "pan")
+                    {
+
+                        puntosSuma = objetoEntregado.GetComponentInParent<recetaHamburguesa>().puntosReceta;
+                        recetaEntregada = objetoEntregado.GetComponentInParent<recetaHamburguesa>().tipoReceta;
+                    }
+                    else
+                    {
+
+                        puntosSuma = objetoEntregado.GetComponentInParent<recetaSopa>().puntosReceta;
+                        recetaEntregada = objetoEntregado.GetComponentInParent<recetaSopa>().tipoReceta;
+                    }
+
+                    if (recetaEntregada == PedidosObject.GetComponent<CrearPedido>().nombrePedidos[i] && !unaSolaEntrega)
+                    {
+                        actualizarPuntos(puntosSuma);
+                        Object.Destroy(objetoEntregado);
+
+                        unaSolaEntrega = true;
+
+                        PedidosObject.GetComponent<CrearPedido>().DestroyPedido(i);
+                    }
+
+                    //}
+                }
+            }
+        }
+
+        //Reinicializamos recetaEntregada a null
+        recetaEntregada = null;
+        //recetaEntregada = ""; 
+    }
+
 
     private void actualizarPuntos(int puntosSuma)
     {

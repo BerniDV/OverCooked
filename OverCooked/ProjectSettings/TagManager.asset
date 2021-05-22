@@ -21,6 +21,8 @@ TagManager:
   - ImagenPedidoPanHamburguesaCol
   - ImagenPedidoPanHamburguesaColTomate
   - olla
+  - ImagenPedidoArroz
+  - ImagenPedidoArrozTomate
   layers:
   - Default
   - TransparentFX

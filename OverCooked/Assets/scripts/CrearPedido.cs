@@ -13,6 +13,7 @@ public class CrearPedido : MonoBehaviour
     //public GameObject[] listaPedidos;
     public Slider[]   listaPedidos;
     public GameObject[]   imagenPedidos;
+    public string[] nombrePedidos;
     public bool[] actividadPedidos;
     public float[] progresoPedidos;
     
@@ -23,11 +24,12 @@ public class CrearPedido : MonoBehaviour
     void Start()
     {
 
-        nPedidosDiferentes = 3;
+        nPedidosDiferentes = 4;
 
         //listaPedidos = new GameObject[4];
         listaPedidos     = new Slider[4];
         imagenPedidos    = new  GameObject[4];
+        nombrePedidos    = new string[4];
         actividadPedidos = new   bool[4];
         progresoPedidos  = new  float[4];
 
@@ -49,13 +51,14 @@ public class CrearPedido : MonoBehaviour
         return -1;
     }
 
-    void DestroyPedido(int index)
+    public void DestroyPedido(int index)
     {
         if (actividadPedidos[index])
         {
 
             actividadPedidos[index] = false;
             progresoPedidos[index] = 0.0f;
+            nombrePedidos[index] = "";
 
             Destroy(listaPedidos[index].gameObject);
             Destroy(imagenPedidos[index].gameObject);
@@ -63,21 +66,24 @@ public class CrearPedido : MonoBehaviour
         }
     }
 
-    void CrearImagenPedido(int index)
+    void CrearImagenNombrePedido(int index)
     {
         System.Random rnd = new System.Random();
-        int randPedido = rnd.Next(0, nPedidosDiferentes);
+        int randPedido = rnd.Next(0, nPedidosDiferentes-1);
 
         switch (randPedido)
         {
             case 0:
                 imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoPanHamburguesa"));
+                nombrePedidos[index] = "hamburguesaDeCarne";
                 break;
             case 1:
                 imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoPanHamburguesaCol"));
+                nombrePedidos[index] = "hamburguesaDeCarneConEnsalada";
                 break;
             case 2:
                 imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoPanHamburguesaColTomate"));
+                nombrePedidos[index] = "hamburguesaDeCarneConEnsaladaConTomate";
                 break;
         }
 
@@ -99,7 +105,7 @@ public class CrearPedido : MonoBehaviour
             if(index >= 0)
             {
                 //creariamos primer pedido disponible
-                CrearImagenPedido(index);
+                CrearImagenNombrePedido(index);
                 /*
                 imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedido"));
                 imagenPedidos[index].gameObject.transform.Translate(0, 1000.0f, 0); //perfecto para moverla correctamente

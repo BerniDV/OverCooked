@@ -714,12 +714,106 @@ public class PickItem : MonoBehaviour
 
 
                         }
-                       
+
+
+
+
+
+                    }//dejar ingrediente de sarten/olla o en mano a arroz dentro de plato
+                    else if (TranspaseObjectPicked.tag == "plato" && TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked != null && TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked.GetComponentInParent<Atributos>().nombre == "arrozHecho")
+                    {
+                        GameObject objectInSasrten = null;
+                        GameObject objectInOlla = null;
+
+                        if (ObjectPicked.tag == "sarten" && ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked != null)
+                        {
+
+                            objectInSasrten = ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked;
+                        }
+                        if (ObjectPicked.tag == "olla" && ObjectPicked.GetComponentInParent<comidaEnOlla>().ObjectPicked != null)
+                        {
+
+                            objectInOlla = ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked;
+                        }
+
+
+                        GameObject objectEnMano = null;
+
+                        if (ObjectPicked != null && ObjectPicked.GetComponentInParent<Atributos>().nombre == "Tomate" )
+                        {
+
+                            objectEnMano = ObjectPicked;
+                        }
+
+                        GameObject ObjectToPut = null;
+
+                        if (objectEnMano != null)
+                        {
+
+                            ObjectToPut = objectEnMano;
+                        }
+                        else if (objectInSasrten != null)
+                        {
+
+                            ObjectToPut = objectInSasrten;
+                        }
+                        else if (objectInOlla != null)
+                        {
+
+                            ObjectToPut = objectInOlla;
+                        }
+
+                        //Colocar segun ingrediente 
+
+                        if (ObjectToPut != null)
+                        {
+
+
+                            switch (ObjectToPut.GetComponentInParent<Atributos>().nombre)
+                            {
+
+                                case "Tomate":
+
+
+                                    TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked.GetComponent<recetaSopa>().TomatePicked = true;
+                                    TranspaseObjectPicked.GetComponentInParent<ComidaEnPlato>().ObjectPicked.GetComponent<Renderer>().material.color = Color.red;
+                                    Object.Destroy(ObjectToPut);
+
+                                    if (this.ObjectPicked.GetComponentInParent<Atributos>().nombre == "sarten")
+                                    {
+
+                                        this.ObjectPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked = null;
+
+                                    }else if (this.ObjectPicked.GetComponentInParent<Atributos>().nombre == "olla")
+                                    {
+
+                                        this.ObjectPicked.GetComponentInParent<comidaEnOlla>().ObjectPicked = null;
+                                    }
+                                    else
+                                    {
+
+                                        this.ObjectPicked = null;
+                                    }
+                                    
+
+                                    this.ObjectToPickUp = null;
+
+                                    break;
+
+                                
+
+                            }
+
+
+
+                        }
+
 
 
 
 
                     }
+
                     else if (TranspaseObjectPicked.tag == "basura" && this.ObjectPicked != null ) {
 
 

@@ -30,7 +30,7 @@ public class Entrega : MonoBehaviour
     {
         //en Start no los cogia. posiblemente porque se ejecuta este start antes
         PedidosObject = GameObject.Find("CrearPedidos");
-        nPedidos = PedidosObject.GetComponent<CrearPedido>().nPedidosDiferentes;
+        nPedidos = 4; //Solo hay 4 posibles pedidos.
         //
 
         displayPoints();

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class CrearPedido : MonoBehaviour
 {
@@ -24,7 +23,7 @@ public class CrearPedido : MonoBehaviour
     void Start()
     {
 
-        nPedidosDiferentes = 4;
+        nPedidosDiferentes = 5;
 
         //listaPedidos = new GameObject[4];
         listaPedidos     = new Slider[4];
@@ -68,8 +67,7 @@ public class CrearPedido : MonoBehaviour
 
     void CrearImagenNombrePedido(int index)
     {
-        System.Random rnd = new System.Random();
-        int randPedido = rnd.Next(0, nPedidosDiferentes-1);
+        int randPedido = Random.Range(0, nPedidosDiferentes);
 
         switch (randPedido)
         {
@@ -84,6 +82,14 @@ public class CrearPedido : MonoBehaviour
             case 2:
                 imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoPanHamburguesaColTomate"));
                 nombrePedidos[index] = "hamburguesaDeCarneConEnsaladaConTomate";
+                break;
+            case 3: 
+                imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoArroz"));
+                nombrePedidos[index] = "SopaDeArroz";
+                break;
+            case 4:
+                imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoArrozTomate"));
+                nombrePedidos[index] = "SopaDeArrozConTomate";
                 break;
         }
 

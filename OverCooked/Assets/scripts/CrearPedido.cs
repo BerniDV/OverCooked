@@ -23,7 +23,7 @@ public class CrearPedido : MonoBehaviour
     void Start()
     {
 
-        nPedidosDiferentes = 5;
+        nPedidosDiferentes = 7;
 
         //listaPedidos = new GameObject[4];
         listaPedidos     = new Slider[4];
@@ -90,6 +90,14 @@ public class CrearPedido : MonoBehaviour
             case 4:
                 imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoArrozTomate"));
                 nombrePedidos[index] = "SopaDeArrozConTomate";
+                break;
+            case 5:
+                imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoTacoCarne"));
+                nombrePedidos[index] = "HotDog";
+                break;
+            case 6:
+                imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoTacoCarneTomate"));
+                nombrePedidos[index] = "HotDogConQuetxup";
                 break;
         }
 

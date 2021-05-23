@@ -23,6 +23,8 @@ TagManager:
   - olla
   - ImagenPedidoArroz
   - ImagenPedidoArrozTomate
+  - ImagenPedidoTacoCarne
+  - ImagenPedidoTacoCarneTomate
   layers:
   - Default
   - TransparentFX

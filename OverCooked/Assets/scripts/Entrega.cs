@@ -135,6 +135,13 @@ public class Entrega : MonoBehaviour
                         puntosSuma = objetoEntregado.GetComponentInParent<recetaHamburguesa>().puntosReceta;
                         recetaEntregada = objetoEntregado.GetComponentInParent<recetaHamburguesa>().tipoReceta;
                     }
+                    else if (objetoEntregado.GetComponentInParent<Atributos>().nombre == "hotDog" || objetoEntregado.GetComponentInParent<Atributos>().nombre == "hotDogConQuetxup")
+                    {
+
+                        puntosSuma = objetoEntregado.GetComponentInParent<recetaHotdog>().puntosReceta;
+                        recetaEntregada = objetoEntregado.GetComponentInParent<recetaHotdog>().tipoReceta;
+
+                    }
                     else
                     {
 

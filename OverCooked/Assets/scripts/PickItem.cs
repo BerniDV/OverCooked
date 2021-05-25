@@ -147,6 +147,26 @@ public class PickItem : MonoBehaviour
             }
 
         }
+        else if (other.tag == "generador")
+        {
+            if (other.GetComponentInParent<generar>().Ingrediente != null)
+            {
+
+
+
+                if (ObjectPicked == null)
+                {
+
+                    TranspaseObjectPicked = other.gameObject;
+                    ObjectToPickUp = other.GetComponentInParent<generar>().Ingrediente;
+                    other.GetComponentInParent<generar>().Character = this.gameObject;
+
+                }
+             
+
+            }
+
+        }
         else if (other.tag == "fogon" )
         {
             /*
@@ -264,6 +284,13 @@ public class PickItem : MonoBehaviour
 
             TranspaseObjectPicked = null;
             other.GetComponentInParent<PickItem>().ObjectToPickUp = null;
+            ObjectToPickUp = null;
+        }else
+        if (other.tag == "generador")
+        {
+
+            TranspaseObjectPicked = null;
+            other.GetComponentInParent<generar>().Character = null;
             ObjectToPickUp = null;
         }
         else if (other.tag == "MesaCortar")
@@ -403,7 +430,26 @@ public class PickItem : MonoBehaviour
                         TranspaseObjectPicked.GetComponentInParent<PickItem>().ObjectPicked = null;
 
 
-                    }else if (TranspaseObjectPicked.tag == "MesaCortar" && TranspaseObjectPicked.GetComponentInParent<PickItem>().ObjectPicked != null && TranspaseObjectPicked.GetComponentInParent<PickItem>().ObjectPicked.GetComponentInParent<PickableObject>().isPickable && this.ObjectPicked == null)
+                    }else
+                    if (TranspaseObjectPicked.tag == "generador" && TranspaseObjectPicked.GetComponentInParent<generar>().Ingrediente != null && this.ObjectPicked == null)
+                    {
+                        //cojer ingrediente de generador
+                        /*
+                        ObjectPicked = TranspaseObjectPicked.GetComponentInParent<PickItem>().ObjectPicked;
+                        ObjectPicked.GetComponent<PickableObject>().isPickable = false;
+                        ObjectPicked.transform.SetParent(LocationToPick);
+                        ObjectPicked.transform.position = LocationToPick.position;
+                        ObjectPicked.GetComponent<Rigidbody>().useGravity = false;
+                        ObjectPicked.GetComponent<Rigidbody>().isKinematic = true;
+                        TranspaseObjectPicked.GetComponentInParent<PickItem>().ObjectPicked = null;
+                        */
+
+
+                        TranspaseObjectPicked.GetComponentInParent<generar>().IngredienteRequested = true;
+
+                    }
+                    
+                    else if (TranspaseObjectPicked.tag == "MesaCortar" && TranspaseObjectPicked.GetComponentInParent<PickItem>().ObjectPicked != null && TranspaseObjectPicked.GetComponentInParent<PickItem>().ObjectPicked.GetComponentInParent<PickableObject>().isPickable && this.ObjectPicked == null)
                     {
                         //llevar objetos colocado en una mesacortar
                         ObjectPicked = TranspaseObjectPicked.GetComponentInParent<PickItem>().ObjectPicked;

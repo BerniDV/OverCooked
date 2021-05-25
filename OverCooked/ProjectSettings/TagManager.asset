@@ -25,6 +25,8 @@ TagManager:
   - ImagenPedidoArrozTomate
   - ImagenPedidoTacoCarne
   - ImagenPedidoTacoCarneTomate
+  - Time
+  - Points
   layers:
   - Default
   - TransparentFX

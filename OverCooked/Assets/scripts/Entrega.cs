@@ -39,11 +39,11 @@ public class Entrega : MonoBehaviour
 
         entregarComida();
 
-        if (points == 3)
+        /*if (points == 3) //He puesto que se encargue un script diferente.
         {
 
             SceneManager.LoadScene(0);
-        }
+        }*/
     }
 
     private void displayPoints()

@@ -102,7 +102,8 @@ public class CrearPedido : MonoBehaviour
         }
 
         imagenPedidos[index].gameObject.transform.Translate(0, 1000.0f, 0); //perfecto para moverla correctamente
-        imagenPedidos[index].gameObject.transform.Translate(-450.0f + (index) * 300.0f, 230.0f, -180.0f);
+        //imagenPedidos[index].gameObject.transform.Translate(-450.0f + (index) * 300.0f, 230.0f, -180.0f);
+        imagenPedidos[index].gameObject.transform.Translate(-450.0f + (index) * 300.0f, 250.0f, -180.0f); // de 230 a 250 para el fullhd loco
         imagenPedidos[index].gameObject.transform.SetParent(canvas.transform, false);
     }
 
@@ -128,7 +129,8 @@ public class CrearPedido : MonoBehaviour
                 */
                 listaPedidos[index] = Instantiate(GameObject.FindGameObjectWithTag("BarraProgreso").GetComponent<Slider>());
                 listaPedidos[index].gameObject.transform.Translate(0, 1000.0f, 0); //perfecto para moverla correctamente
-                listaPedidos[index].gameObject.transform.Translate(-450.0f+(index)*300.0f, 140.0f, -180.0f); 
+                //listaPedidos[index].gameObject.transform.Translate(-450.0f+(index)*300.0f, 140.0f, -180.0f); 
+                listaPedidos[index].gameObject.transform.Translate(-450.0f + (index) * 300.0f, 200.0f, -180.0f); // de 140 a 200 para el fullhd loco
                 listaPedidos[index].gameObject.transform.SetParent(canvas.transform, false);
 
                 actividadPedidos[index] = true;

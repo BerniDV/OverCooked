@@ -20,7 +20,27 @@ public class PickItem : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag == "Mesa")
+        if (other.tag == "plato")
+        {
+            if (other.GetComponentInParent<ComidaEnPlato>().ObjectPicked == null)
+            {
+                TranspaseObjectPicked = other.gameObject;
+
+                if (ObjectPicked != null && ObjectPicked.tag != "plato" && ObjectPicked.tag != "sarten")
+                {
+                    other.GetComponentInParent<ComidaEnPlato>().ObjectToPickUp = this.ObjectPicked;
+
+                }
+
+            }
+            else
+            {
+                this.ObjectToPickUp = other.GetComponentInParent<ComidaEnPlato>().ObjectPicked;
+                TranspaseObjectPicked = other.gameObject;
+            }
+
+        }
+        else if (other.tag == "Mesa")
         {
 
             
@@ -79,26 +99,6 @@ public class PickItem : MonoBehaviour
 
             }
 
-
-        }
-        else if (other.tag == "plato")
-        {
-            if (other.GetComponentInParent<ComidaEnPlato>().ObjectPicked == null )
-            {
-                TranspaseObjectPicked = other.gameObject;
-
-                if (ObjectPicked != null && ObjectPicked.tag != "plato" && ObjectPicked.tag != "sarten")
-                {
-                    other.GetComponentInParent<ComidaEnPlato>().ObjectToPickUp = this.ObjectPicked;
-
-                }
-
-            }
-            else
-            {
-                this.ObjectToPickUp = other.GetComponentInParent<ComidaEnPlato>().ObjectPicked;
-                TranspaseObjectPicked = other.gameObject;
-            }
 
         }
         else if (other.tag == "sarten"  )

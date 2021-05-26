@@ -27,7 +27,7 @@ public class generar : MonoBehaviour
     void GenerarModelo()
     {
 
-        if (IngredienteRequested && Character!=null && Character.GetComponentInParent<PickItem>().ObjectPicked == null)
+        if (IngredienteRequested && Character!=null && Character.tag == "item_pickable" && Character.GetComponentInParent<PickItem>().ObjectPicked == null)
         {
 
 

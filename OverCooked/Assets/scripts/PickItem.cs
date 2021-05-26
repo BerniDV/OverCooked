@@ -523,7 +523,7 @@ public class PickItem : MonoBehaviour
 
 
                     }
-                    else
+                    else if(ObjectToPickUp)
                     {
                         //llevar objeto al lado de una mesa sin estar conectado a la mesa
                         ObjectPicked = ObjectToPickUp;

@@ -8,12 +8,19 @@ public class MainMenu : MonoBehaviour
     
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Level01");
     }
 
     public void ExitGame()
     {
 
         Application.Quit();
+    }
+
+    public void redirectMainMenu()
+    {
+
+        SceneManager.LoadScene("Menu");
+
     }
 }

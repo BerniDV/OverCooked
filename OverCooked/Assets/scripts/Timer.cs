@@ -27,8 +27,8 @@ public class Timer : MonoBehaviour
 
             timeValue = 0;
 
-            SceneManager.LoadScene(0);
-
+            SceneManager.LoadScene("LoseMenu");
+            
         }
 
         displayTime(timeValue);

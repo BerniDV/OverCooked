@@ -33,6 +33,8 @@ public class Entrega : MonoBehaviour
         nPedidos = 4; //Solo hay 4 posibles pedidos.
         //
 
+        if (Input.GetKeyDown("0")) actualizarPuntos(1);
+
         displayPoints();
 
         referenciarAComida();

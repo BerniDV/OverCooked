@@ -2159,7 +2159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfff7be90ea529b4cb168712354bb3e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevel: Level01
+  nextLevel: Level04
   puntosParaFinalizarLevel: 20
 --- !u!4 &1051100101
 Transform:

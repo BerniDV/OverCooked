@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PasarLevel : MonoBehaviour
 {
     GameObject objectPoints;
-    GameObject objectTime;
+    //GameObject objectTime;
 
     public string nextLevel;
     public int puntosParaFinalizarLevel;
@@ -15,7 +15,7 @@ public class PasarLevel : MonoBehaviour
     void Start()
     {
         objectPoints = GameObject.FindWithTag("entrega");
-        objectTime = GameObject.FindWithTag("Time");
+        //objectTime = GameObject.FindWithTag("Time");
         puntosParaFinalizarLevel = 20;
     }
 

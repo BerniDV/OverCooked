@@ -37,8 +37,8 @@ public class CrearPedido : MonoBehaviour
         //for (int i = 0; i < 4; ++i) listaPedidos[i] = null;
         for (int i = 0; i < 4; ++i) actividadPedidos[i] = false;
         
-        timeToNextPedido = 5.0f;
-        timePedido = 25.0f;
+        timeToNextPedido = 12.0f; // 12 segundos
+        timePedido = 60.0f; //60 segundos
     }
 
     int primerPedidoLibre()

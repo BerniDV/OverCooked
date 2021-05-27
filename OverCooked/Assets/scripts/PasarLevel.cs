@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PasarLevel01 : MonoBehaviour
+public class PasarLevel : MonoBehaviour
 {
     GameObject objectPoints;
     GameObject objectTime;
@@ -24,7 +24,7 @@ public class PasarLevel01 : MonoBehaviour
     {
         if(objectPoints.GetComponent<Entrega>().points > puntosParaFinalizarLevel)
         {
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene(nextLevel);
         }
     }
 }

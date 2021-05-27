@@ -8,6 +8,7 @@ public class PasarLevel01 : MonoBehaviour
     GameObject objectPoints;
     GameObject objectTime;
 
+    public string nextLevel;
     public int puntosParaFinalizarLevel;
 
     // Start is called before the first frame update

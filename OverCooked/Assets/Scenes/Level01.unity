@@ -2599,6 +2599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1004810533}
   - component: {fileID: 1004810534}
+  - component: {fileID: 1004810535}
   m_Layer: 0
   m_Name: SiguienteLevel
   m_TagString: Untagged
@@ -2634,6 +2635,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextLevel: Level02
   puntosParaFinalizarLevel: 20
+--- !u!114 &1004810535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004810532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab4d497abc26d144886abe32d48fdbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1009289778
 GameObject:
   m_ObjectHideFlags: 0
@@ -4915,6 +4928,7 @@ MonoBehaviour:
   listaPedidos: []
   imagenPedidos: []
   nombrePedidos: []
+  puntosPedidos: 
   actividadPedidos: 
   progresoPedidos: []
 --- !u!4 &1999631348

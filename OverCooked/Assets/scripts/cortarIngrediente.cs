@@ -7,18 +7,19 @@ public class cortarIngrediente : MonoBehaviour
     public bool sePuedeCortar;
     public GameObject ColCortada;
     public GameObject TomateCortado;
+    public float tiempoHastaCortado;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        tiempoHastaCortado = 4.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
         sePuedeCortar = PuedeCortar();
-
+        
         SustituirModelo();
     }
 
@@ -46,44 +47,50 @@ public class cortarIngrediente : MonoBehaviour
 
         if (sePuedeCortar)
         {
-
-            GameObject ItemPicked;
-            ItemPicked = this.GetComponentInParent<PickItem>().ObjectPicked;
-
-            string nameIngrediente = this.GetComponentInParent<PickItem>().ObjectPicked.GetComponentInParent<Atributos>().nombre;
-
-
-            Object.Destroy(ItemPicked);
-
-            GameObject ObjetoCortado = null;
-
-            if (nameIngrediente == "col")
+            tiempoHastaCortado -= Time.deltaTime;
+            if (tiempoHastaCortado < 0.0f)
             {
+                GameObject ItemPicked;
+                ItemPicked = this.GetComponentInParent<PickItem>().ObjectPicked;
 
-                ObjetoCortado = Instantiate(ColCortada);
-                ObjetoCortado.transform.position = this.GetComponentInParent<PickItem>().LocationToPick.position;
-                ObjetoCortado.transform.SetParent(this.GetComponentInParent<PickItem>().LocationToPick);
-                ObjetoCortado.GetComponent<Rigidbody>().useGravity = false;
-                ObjetoCortado.GetComponent<Rigidbody>().isKinematic = true;
-
-            } else if (nameIngrediente == "Tomate") {
+                string nameIngrediente = this.GetComponentInParent<PickItem>().ObjectPicked.GetComponentInParent<Atributos>().nombre;
 
 
-                ObjetoCortado = Instantiate(TomateCortado);
-                ObjetoCortado.transform.position = this.GetComponentInParent<PickItem>().LocationToPick.position;
-                ObjetoCortado.transform.SetParent(this.GetComponentInParent<PickItem>().LocationToPick);
-                ObjetoCortado.GetComponent<Rigidbody>().useGravity = false;
-                ObjetoCortado.GetComponent<Rigidbody>().isKinematic = true;
+                Object.Destroy(ItemPicked);
 
-            }
+                GameObject ObjetoCortado = null;
 
-            if (ObjetoCortado != null)
-            {
+                if (nameIngrediente == "col")
+                {
 
-                this.GetComponentInParent<PickItem>().ObjectPicked = ObjetoCortado;
+                    ObjetoCortado = Instantiate(ColCortada);
+                    ObjetoCortado.transform.position = this.GetComponentInParent<PickItem>().LocationToPick.position;
+                    ObjetoCortado.transform.SetParent(this.GetComponentInParent<PickItem>().LocationToPick);
+                    ObjetoCortado.GetComponent<Rigidbody>().useGravity = false;
+                    ObjetoCortado.GetComponent<Rigidbody>().isKinematic = true;
 
+                }
+                else if (nameIngrediente == "Tomate")
+                {
+
+
+                    ObjetoCortado = Instantiate(TomateCortado);
+                    ObjetoCortado.transform.position = this.GetComponentInParent<PickItem>().LocationToPick.position;
+                    ObjetoCortado.transform.SetParent(this.GetComponentInParent<PickItem>().LocationToPick);
+                    ObjetoCortado.GetComponent<Rigidbody>().useGravity = false;
+                    ObjetoCortado.GetComponent<Rigidbody>().isKinematic = true;
+
+                }
+
+                if (ObjetoCortado != null)
+                {
+
+                    this.GetComponentInParent<PickItem>().ObjectPicked = ObjetoCortado;
+
+                }
             }
         }
+        else tiempoHastaCortado = 4.0f;
 
     }
 }

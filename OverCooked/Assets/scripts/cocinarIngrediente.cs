@@ -11,10 +11,14 @@ public class cocinarIngrediente : MonoBehaviour
     public bool sePuedeHervir;
     public GameObject ArrozHervido;
 
+    public float tiempoHastaCarneCocinada;
+    public float tiempoHastaArrozCocinado;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        tiempoHastaCarneCocinada =  8.0f;
+        tiempoHastaArrozCocinado = 16.0f;
     }
 
     // Update is called once per frame
@@ -80,45 +84,51 @@ public class cocinarIngrediente : MonoBehaviour
 
         if (sePuedeCocinar)
         {
+            tiempoHastaCarneCocinada -= Time.deltaTime;
+            if (tiempoHastaCarneCocinada < 0.0f)
+            {
+                GameObject ItemPicked;
+                ItemPicked = this.GetComponentInParent<PickItem>().ObjectPicked;
 
-            GameObject ItemPicked;
-            ItemPicked = this.GetComponentInParent<PickItem>().ObjectPicked;
+                GameObject Ingrediente = ItemPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked;
+                Object.Destroy(Ingrediente);
 
-            GameObject Ingrediente = ItemPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked;
-            Object.Destroy(Ingrediente);
-
-            GameObject MyCarneCocinada = Instantiate(CarneCocinada);
-            MyCarneCocinada.transform.position = ItemPicked.GetComponentInParent<comidaEnSarten>().LocationToPick.position;
-            MyCarneCocinada.transform.SetParent(ItemPicked.GetComponentInParent<comidaEnSarten>().LocationToPick);
-            MyCarneCocinada.GetComponent<Rigidbody>().useGravity = false;
-            MyCarneCocinada.GetComponent<Rigidbody>().isKinematic = true;
+                GameObject MyCarneCocinada = Instantiate(CarneCocinada);
+                MyCarneCocinada.transform.position = ItemPicked.GetComponentInParent<comidaEnSarten>().LocationToPick.position;
+                MyCarneCocinada.transform.SetParent(ItemPicked.GetComponentInParent<comidaEnSarten>().LocationToPick);
+                MyCarneCocinada.GetComponent<Rigidbody>().useGravity = false;
+                MyCarneCocinada.GetComponent<Rigidbody>().isKinematic = true;
 
 
-            ItemPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked = MyCarneCocinada;
+                ItemPicked.GetComponentInParent<comidaEnSarten>().ObjectPicked = MyCarneCocinada;
 
-            //preparar arroz
+                //preparar arroz
+            }
         }
-        
+        else tiempoHastaCarneCocinada = 8.0f;
+
         if (sePuedeHervir && this.GetComponentInParent<PickItem>().ObjectPicked.GetComponentInParent<comidaEnOlla>().ObjectPicked.GetComponentInParent<Atributos>().nombre == "arroz")
         {
+            tiempoHastaArrozCocinado -= Time.deltaTime;
+            if (tiempoHastaArrozCocinado < 0.0f)
+            {
+                GameObject ItemPicked;
+                ItemPicked = this.GetComponentInParent<PickItem>().ObjectPicked;
 
-            GameObject ItemPicked;
-            ItemPicked = this.GetComponentInParent<PickItem>().ObjectPicked;
+                GameObject Ingrediente = ItemPicked.GetComponentInParent<comidaEnOlla>().ObjectPicked;
+                Object.Destroy(Ingrediente);
 
-            GameObject Ingrediente = ItemPicked.GetComponentInParent<comidaEnOlla>().ObjectPicked;
-            Object.Destroy(Ingrediente);
-
-            GameObject MyArrozHervido = Instantiate(ArrozHervido);
-            MyArrozHervido.transform.position = ItemPicked.GetComponentInParent<comidaEnOlla>().LocationToPick.position;
-            MyArrozHervido.transform.SetParent(ItemPicked.GetComponentInParent<comidaEnOlla>().LocationToPick);
-            MyArrozHervido.GetComponent<Rigidbody>().useGravity = false;
-            MyArrozHervido.GetComponent<Rigidbody>().isKinematic = true;
+                GameObject MyArrozHervido = Instantiate(ArrozHervido);
+                MyArrozHervido.transform.position = ItemPicked.GetComponentInParent<comidaEnOlla>().LocationToPick.position;
+                MyArrozHervido.transform.SetParent(ItemPicked.GetComponentInParent<comidaEnOlla>().LocationToPick);
+                MyArrozHervido.GetComponent<Rigidbody>().useGravity = false;
+                MyArrozHervido.GetComponent<Rigidbody>().isKinematic = true;
 
 
-            ItemPicked.GetComponentInParent<comidaEnOlla>().ObjectPicked = MyArrozHervido;
-
-
+                ItemPicked.GetComponentInParent<comidaEnOlla>().ObjectPicked = MyArrozHervido;
+            }
         }
+        else tiempoHastaArrozCocinado = 16.0f;
 
     }
 }

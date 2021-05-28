@@ -13,6 +13,7 @@ public class CrearPedido : MonoBehaviour
     public Slider[]   listaPedidos;
     public GameObject[]   imagenPedidos;
     public string[] nombrePedidos;
+    public int[] puntosPedidos;
     public bool[] actividadPedidos;
     public float[] progresoPedidos;
     
@@ -29,6 +30,7 @@ public class CrearPedido : MonoBehaviour
         listaPedidos     = new Slider[4];
         imagenPedidos    = new  GameObject[4];
         nombrePedidos    = new string[4];
+        puntosPedidos    = new    int[4];
         actividadPedidos = new   bool[4];
         progresoPedidos  = new  float[4];
 
@@ -65,6 +67,19 @@ public class CrearPedido : MonoBehaviour
         }
     }
 
+    public void TerminarPedido(int index)
+    {
+        if (actividadPedidos[index])
+        {
+            int points = puntosPedidos[index];
+            GameObject g = GameObject.FindGameObjectWithTag("entrega");
+            g.GetComponent<Entrega>().actualizarPuntos(points);
+
+            DestroyPedido(index);
+        }
+        
+    }
+
     void CrearImagenNombrePedido(int index)
     {
         int randPedido = Random.Range(0, nPedidosDiferentes);
@@ -74,30 +89,37 @@ public class CrearPedido : MonoBehaviour
             case 0:
                 imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoPanHamburguesa"));
                 nombrePedidos[index] = "hamburguesaDeCarne";
+                puntosPedidos[index] = 5;
                 break;
             case 1:
                 imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoPanHamburguesaCol"));
                 nombrePedidos[index] = "hamburguesaDeCarneConEnsalada";
+                puntosPedidos[index] = 10;
                 break;
             case 2:
                 imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoPanHamburguesaColTomate"));
                 nombrePedidos[index] = "hamburguesaDeCarneConEnsaladaConTomate";
+                puntosPedidos[index] = 15;
                 break;
             case 3: 
                 imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoArroz"));
                 nombrePedidos[index] = "SopaDeArroz";
+                puntosPedidos[index] = 7;
                 break;
             case 4:
                 imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoArrozTomate"));
                 nombrePedidos[index] = "SopaDeArrozConTomate";
+                puntosPedidos[index] = 20;
                 break;
             case 5:
                 imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoTacoCarne"));
                 nombrePedidos[index] = "HotDog";
+                puntosPedidos[index] = 11;
                 break;
             case 6:
                 imagenPedidos[index] = (GameObject)Instantiate(GameObject.FindGameObjectWithTag("ImagenPedidoTacoCarneTomate"));
                 nombrePedidos[index] = "HotDogConQuetxup";
+                puntosPedidos[index] = 25;
                 break;
         }
 
@@ -160,9 +182,9 @@ public class CrearPedido : MonoBehaviour
 
         //Mirar si se entrega algun pedido correcto
         //por ahora las teclas 1, 2, 3, 4 destruyen el pedido correspondiente.
-        if (Input.GetKeyDown("1")) DestroyPedido(0);
-        if (Input.GetKeyDown("2")) DestroyPedido(1);
-        if (Input.GetKeyDown("3")) DestroyPedido(2);
-        if (Input.GetKeyDown("4")) DestroyPedido(3);
+        if (Input.GetKeyDown("1")) TerminarPedido(0);
+        if (Input.GetKeyDown("2")) TerminarPedido(1);
+        if (Input.GetKeyDown("3")) TerminarPedido(2);
+        if (Input.GetKeyDown("4")) TerminarPedido(3);
     }
 }

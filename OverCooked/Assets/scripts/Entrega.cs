@@ -172,7 +172,7 @@ public class Entrega : MonoBehaviour
     }
 
 
-    private void actualizarPuntos(int puntosSuma)
+    public void actualizarPuntos(int puntosSuma)
     {
 
         points += puntosSuma;
